@@ -1,8 +1,7 @@
 {
-  "name": "react_qrcode_generation",
+  "name": "grace-juice-qr-scanner",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://localhost:1212",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.9",
@@ -22,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy":"http://localhost:1212",
   "eslintConfig": {
     "extends": [
       "react-app",
