@@ -16,8 +16,8 @@ const port = 1212;
 // CONNECTION TO SERIAL PORT start
 const parser = new ReadlineParser({ delimiter: '\r\n' });
 
-try{
-    const proteusPort = new SerialPort({ path: 'COM5',
+
+    const proteusPort = new SerialPort({ path: '\\.\\CNCA0',
     baudRate: 9600,
     dataBits: 8,
     parity: 'none',
@@ -26,11 +26,7 @@ try{
 });
 
 proteusPort.pipe(parser);
-}
 
-catch(err){
-    console.log("Please configure virtual serial port correct");
-}
 // CONNECTION TO SERIAL PORT end
 
 
@@ -38,13 +34,15 @@ catch(err){
 app.post("/home", (req, res)=>{
    const {paid} = req.body;
    try {
-    console.log("paid juice type:",paid);
 
     //sending data to serial port
     proteusPort.write(paid);
 
-   } catch (error) {
 
+   //print the value on the terminal for debuging
+    console.log("paid juice type:",paid);
+
+   } catch (error) {
     console.log("Please configure correct virtual port in your simulation. It seems the port does not receive sent data")
    }
 })
